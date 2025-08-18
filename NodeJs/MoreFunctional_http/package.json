@@ -1,0 +1,16 @@
+{
+  "name": "morefunctional_http",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^24.2.1",
+    "start": "^5.1.0"
+  }
+}
