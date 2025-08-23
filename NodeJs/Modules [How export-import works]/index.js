@@ -18,3 +18,4 @@ console.log(div(6, 2)); // 3
 const value = require('./math');
 value();
 
+
