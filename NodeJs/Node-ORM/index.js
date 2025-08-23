@@ -19,4 +19,5 @@ async function createUser({id, name, email}) {
 // createUser({ id: 1, name: 'shivam', email: 'shivam346@gmail.com' });
 // createUser({ id: 2, name: 'shreya', email: 'shreya6746@gmail.com' });
 
+//createUser()
 getAllUsers()
