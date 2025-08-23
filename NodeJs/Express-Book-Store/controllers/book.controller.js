@@ -1,19 +1,20 @@
 const booksTable = require('../models/book.model');
 const db = require('../db');
+const {eq} = require('drizzle-orm');
 
-exports.getAllBokks = (req, res) => {
-    res.json(BOOKS);
+exports.getAllBokks = async (req, res) => {
+    const books = await db.select().from(booksTable);
+    return res.json(books);
 }
 
-exports.getBookById = (req, res) => {
-    const id = parseInt(req.params.id);
+exports.getBookById = async (req, res) => {
+    const id = req.params.id;
 
-    if (isNaN(id))
-        return res
-            .status(400)
-            .json({ error: 'Invalid book ID' });
-
-    const book = BOOKS.find((e) => e.id === id);
+    const [book] = await db.
+        select()
+        .from(booksTable)
+        .where((table) => eq(table.id, id))
+        .limit(1);
 
     if (!book) 
         return res
@@ -23,33 +24,28 @@ exports.getBookById = (req, res) => {
     return res.json(book);
 }
 
-exports.createBook = (req, res) => {
-    const { title, author } = req.body;
+exports.createBook = async (req, res) => {
+    const { title, description, authorId } = req.body;
 
     if (!title || title === '') return res.status(400).json({ error: 'Title is required' });
 
-    if (!author || author === '') return res.status(400).json({ error: 'Author is required' });
+    const [result] = await db
+    .insert(booksTable)
+    .values({
+        title, 
+        authorId,
+        description,
+    }).returning({
+        id: booksTable.id,
+    });
 
-    const id = BOOKS.length + 1;
-
-    const book = { id, title, author };
-    BOOKS.push(book);
-
-    return res.status(201).json({message: 'Books created successfully.', id});
+    return res.status(201).json({message: 'Books created successfully.', id: result.id});
 }
 
-exports.deleteBook = (req, res) => {
-    const id = parseInt(req.params.id);
+exports.deleteBookById = async (req, res) => {
+    const id = req.params.id;
 
-    if (isNaN(id)) 
-        return res.status(400).json({ error: 'Invalid book ID' });
-    
-    const indexToDelete = BOOKS.findIndex((e) => e.id === id);
-
-    if (indexToDelete < 0) 
-        return res.status(404).json({ message: 'Book with id ${id} not exist' });
-
-        BOOKS.splice(indexToDelete, 1);
+    await db.delete(booksTable).where((bookTable) => eq(bookTable.id, id));
 
     return res.status(200).json({ message: 'Book deleted successfully' });
 }
