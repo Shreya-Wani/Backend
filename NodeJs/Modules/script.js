@@ -17,3 +17,4 @@ fs.readFile('notes.txt', 'utf8', (err, data) => {
 
 console.log('End of script');
 
+
