@@ -2,7 +2,7 @@ const booksTable = require('../models/book.model');
 const db = require('../db');
 const {eq} = require('drizzle-orm');
 
-exports.getAllBokks = async (req, res) => {
+exports.getAllBooks = async (req, res) => {
     const books = await db.select().from(booksTable);
     return res.json(books);
 }
@@ -45,7 +45,7 @@ exports.createBook = async (req, res) => {
 exports.deleteBookById = async (req, res) => {
     const id = req.params.id;
 
-    await db.delete(booksTable).where((bookTable) => eq(bookTable.id, id));
+    await db.delete(booksTable).where(eq(booksTable.id, id));
 
     return res.status(200).json({ message: 'Book deleted successfully' });
 }
