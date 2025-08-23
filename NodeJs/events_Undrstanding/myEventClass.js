@@ -5,6 +5,7 @@ class Chat extends EventEmitter{
         console.log(`Message sent : ${msg}`);
         this.emit('messageRecieved',msg);
     }
+    
 }
 
 const chat = new Chat();
