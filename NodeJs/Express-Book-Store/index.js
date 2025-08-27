@@ -4,6 +4,7 @@ const express = require('express');
 const {loggerMiddleware} = require('./middlewares/logger')
 
 const bookRouter = require('./routes/books.routes');
+const authorRoute = require('./routes/author.routes');
 
 const app = express();
 const PORT = 8000;
@@ -14,5 +15,6 @@ app.use(loggerMiddleware); // custom middleware to log requests
 
 //Routes
 app.use('/books', bookRouter);
+app.use('/authors', authorRoute);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
