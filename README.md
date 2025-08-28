@@ -35,8 +35,6 @@ This project covers real-world backend concepts:
 - **Middlewares** → Logging, validation, and error handling.
 - **CRUD Operations** → Full Create, Read, Update, Delete functionality.
 
-> 🏆 This is the most complete project in the repo and reflects a **production-like Express structure**.
-
 ---
 
 ### 5️⃣ Modules [How export-import works]
@@ -110,40 +108,6 @@ This project covers real-world backend concepts:
 - Build an advanced **REST API** with proper MVC structure.  
 - Explore **GraphQL** and **WebSockets**.  
 
----
-
-## 📌 How to Run
-
-1. Clone this repo:
-   ```bash
-   git clone https://github.com/Shreya-Wani/Backend.git
-   cd Backend
-
-````
-
-2. Navigate into a project folder (e.g., Express-Book-Store):
-
-   ```bash
-   cd NodeJs/Express-Book-Store
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Run the server:
-
-   ```bash
-   node index.js
-   ```
-
-   or
-
-   ```bash
-   npm start
-   ```
 ---
 
 ## 📬 Contact
