@@ -122,7 +122,3 @@ This learning journey has been inspired and guided by
 for their amazing teaching and resources. 🎓
 
 ---
-
-✨ This repository is a reflection of my **Backend Development Learning Journey** with Node.js.
-
-```
